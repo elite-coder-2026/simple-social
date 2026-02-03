@@ -1,0 +1,43 @@
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: $pill-radius;
+
+    &__label {
+        font-size: 12px;
+    }
+
+    &__control {
+        position: relative;
+        width: $switch-width;
+        height: $switch-height;
+        border-radius: $pill-radius;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: background 150ms ease, border-color 150ms ease;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: $knob-offset;
+            left: $knob-offset;
+            width: $knob-size;
+            height: $knob-size;
+            border-radius: 50%;
+            background: $light-card;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 150ms ease;
+        }
+
+        &[data-on="dark"] {
+            background: $switch-on;
+            border-color: $switch-on;
+
+            &::after {
+                transform: translateX($switch-width - $knob-size - ($knob-offset * 2));
+            }
+        }
+    }
+}
