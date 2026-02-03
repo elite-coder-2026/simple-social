@@ -68,6 +68,7 @@ const listIncomingRequests = async (req, res) => {
     const me = req.me;
     if (!me) return res.status(401).json({ error: "Unauthorized" });
 
+
     const result = await query(relation_queries.listIncoming, [me]);
     return res.json({ requests: result.rows });
   } catch (err) {
@@ -130,7 +131,7 @@ const rejectRequest = async (req, res) => {
     if (rel.user_a !== me && rel.user_b !== me) return res.status(403).json({ error: "Forbidden" });
     if (rel.requested_by === me) return res.status(400).json({ error: "Cannot reject your own request" });
 
-    const updated = await query(relation_queries.statusByIdReturningRelation, [relationId, "rejected"]);
+     const updated = await query(relation_queries.statusByIdReturningRelation, [relationId, "rejected"]);
     return res.json({ relation: updated.rows[0] });
   } catch (err) {
     console.error("rejectRequest failed", err);
