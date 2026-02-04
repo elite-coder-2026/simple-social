@@ -1,0 +1,75 @@
+@use "../partials/vars" as *;
+@use "../partials/mixins" as *;
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: 1px solid $stroke;
+    background: rgba(255, 255, 255, 0.04);
+    color: $text;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    &:focus-visible {
+        @include focus-ring;
+    }
+}
+
+.icon-btn__lines {
+    width: 18px;
+    height: 12px;
+    position: relative;
+    display: block;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: currentColor;
+        border-radius: 999px;
+    }
+
+    &::before {
+        top: 0;
+    }
+
+    &::after {
+        bottom: 0;
+    }
+}
+
+.icon-btn__x {
+    width: 16px;
+    height: 16px;
+    position: relative;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 16px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 999px;
+        transform-origin: center;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+}
