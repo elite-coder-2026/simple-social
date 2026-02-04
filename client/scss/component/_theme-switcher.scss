@@ -1,3 +1,13 @@
+@use "../partials/vars" as *;
+
+$pill-radius: 999px;
+$switch-width: 44px;
+$switch-height: 26px;
+$knob-size: 20px;
+$knob-offset: 3px;
+$light-card: #fff;
+$switch-on: $accent-2;
+
 .theme-switch {
     display: inline-flex;
     align-items: center;
